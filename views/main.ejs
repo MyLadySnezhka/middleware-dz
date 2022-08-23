@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js" ></script>
+    <title>План тренировки</title>
+</head>
+<body>
+    <p>Введите номера тренажеров:</p> 
+    <form name="trenForm">
+        <input type="text" name="'tren1">
+        <input type="text" name="'tren2">
+        <input type="text" name="'tren3">
+        <button type="submit">OK</button>
+    </form>
+
+    <script>
+        const formEl = document.forms.trenForm;
+
+        formEl.addEventListener('submit', async (ev) => {
+            ev.preventDefault(); 
+            const formData = new FormData(ev.target);
+
+            const { data } = await axios.post('/tren', formData);
+            console.log( data );
+        })
+    </script>
+</body>
+</html>
