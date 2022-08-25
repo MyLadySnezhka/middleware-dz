@@ -1,18 +1,17 @@
 const express = require('express');
 const server = express();
+const mainRouter = require('./routes/main');
 
 server.set('view engine', 'ejs');
 server.set('views', './views');
 
 server.use(express.static('./public'));
 
-server.get('/', (req, res) => {
-    res.render('main');
-});
+server.use('/', mainRouter);
 
-server.post('/tren', (req, res) => {
-    console.log('Тренировка построена!');
-    res.json({ status: 'ok' });
-});
+server.use((req, res, next) => {
+   res.statusCode = 404;
+   res.render('404');
+})
 
 server.listen(3000);
