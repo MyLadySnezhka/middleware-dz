@@ -5,7 +5,7 @@ router.get('/', (req, res) => {
     res.render('main');
 });
 
-router.get('/tren', (req, res) => {
+router.post('/tren', (req, res) => {
     console.log('Тренировка построена!');
     res.json({ status: 'ok' });
 });
